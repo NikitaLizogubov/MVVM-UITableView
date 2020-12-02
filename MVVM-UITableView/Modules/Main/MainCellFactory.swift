@@ -11,7 +11,8 @@ struct MainCellFactory: AdaptedTableViewCellFactoryProtocol {
     
     var cellTypes: [AdaptedCellProtocol.Type] = [
         TextTableViewCell.self,
-        ButtonTableViewCell.self
+        ButtonTableViewCell.self,
+        ImageTableViewCell.self
     ]
     
     func generateCell(viewModel: AdaptedCellViewModelProtocol, tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
@@ -22,6 +23,10 @@ struct MainCellFactory: AdaptedTableViewCellFactoryProtocol {
             return view
         case let viewModel as ButtonCellViewModelType:
             let view = ButtonTableViewCell.reuse(tableView, for: indexPath)
+            view.viewModel = viewModel
+            return view
+        case let viewModel as ImageCellViewModelType:
+            let view = ImageTableViewCell.reuse(tableView, for: indexPath)
             view.viewModel = viewModel
             return view
         default:

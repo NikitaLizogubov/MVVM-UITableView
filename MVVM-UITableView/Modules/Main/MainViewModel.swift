@@ -27,9 +27,10 @@ class MainViewModel: AdaptedSectionViewModelType {
         let section = AdaptedSectionViewModel(cells: [
             TextCellViewModel(text: "Hello!"),
             TextCellViewModel(text: "It's UITable view with using MVVM"),
-            ButtonCellViewModel(buttonTitle: "Select Me") { [weak self] in
+            ImageCellViewModel(imageName: "habr"),
+            ButtonCellViewModel(buttonTitle: "Comments") {
                 print(#function)
-            }
+            },
         ])
         sections.append(section)
     }
