@@ -12,6 +12,8 @@ class AdaptedSectionViewModel: AdaptedSectionViewModelProtocol {
     
     // MARK: - Public properties
     
+    var header: AdaptedSectionHeaderViewModelProtocol?
+    var footer: AdaptedSectionHeaderViewModelProtocol?
     var cells: [AdaptedCellViewModelProtocol] {
         didSet {
             reloadDataSubject.send()
@@ -28,7 +30,11 @@ class AdaptedSectionViewModel: AdaptedSectionViewModelProtocol {
     
     // MARK: - Init
     
-    init(cells: [AdaptedCellViewModelProtocol]) {
+    init(header: AdaptedSectionHeaderViewModelProtocol? = nil,
+         footer: AdaptedSectionHeaderViewModelProtocol? = nil,
+         cells: [AdaptedCellViewModelProtocol]) {
+        self.header = header
+        self.footer = footer
         self.cells = cells
         self.reloadDataSubject = PassthroughSubject<Void, Never>()
     }

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: AdaptedTableView! {
         didSet {
             tableView.viewModel = MainViewModel()
-            tableView.cellFactory = MainCellFactory()
+            tableView.cellFactory = MainSectionFactory()
             
             tableView.setup()
         }

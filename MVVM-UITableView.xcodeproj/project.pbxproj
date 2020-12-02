@@ -17,7 +17,7 @@
 		8DE1572F2577F60D00001E98 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE1572D2577F60D00001E98 /* TextTableViewCell.swift */; };
 		8DE157302577F60D00001E98 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE1572E2577F60D00001E98 /* TextTableViewCell.xib */; };
 		8DE157342577F62600001E98 /* TextCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE157332577F62600001E98 /* TextCellViewModel.swift */; };
-		8DE157372577F63400001E98 /* MainCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE157362577F63400001E98 /* MainCellFactory.swift */; };
+		8DE157372577F63400001E98 /* MainSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE157362577F63400001E98 /* MainSectionFactory.swift */; };
 		8DE1573A2577F94E00001E98 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE157392577F94E00001E98 /* MainViewModel.swift */; };
 		8DE157432577FA6600001E98 /* AdaptedSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE157422577FA6600001E98 /* AdaptedSectionViewModel.swift */; };
 		8DE157472577FD4500001E98 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE157452577FD4500001E98 /* ButtonTableViewCell.swift */; };
@@ -41,7 +41,7 @@
 		8DE1572D2577F60D00001E98 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		8DE1572E2577F60D00001E98 /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
 		8DE157332577F62600001E98 /* TextCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCellViewModel.swift; sourceTree = "<group>"; };
-		8DE157362577F63400001E98 /* MainCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellFactory.swift; sourceTree = "<group>"; };
+		8DE157362577F63400001E98 /* MainSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionFactory.swift; sourceTree = "<group>"; };
 		8DE157392577F94E00001E98 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8DE157422577FA6600001E98 /* AdaptedSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptedSectionViewModel.swift; sourceTree = "<group>"; };
 		8DE157452577FD4500001E98 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 				8DE157292577F5C300001E98 /* Cells */,
 				8DE1570B2577ECA900001E98 /* ViewController.swift */,
 				8DE157392577F94E00001E98 /* MainViewModel.swift */,
-				8DE157362577F63400001E98 /* MainCellFactory.swift */,
+				8DE157362577F63400001E98 /* MainSectionFactory.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 				8DE157272577EF4400001E98 /* AdaptedTableView.swift in Sources */,
 				8DE1574B2577FD6400001E98 /* ButtonCellViewModel.swift in Sources */,
 				8DE157432577FA6600001E98 /* AdaptedSectionViewModel.swift in Sources */,
-				8DE157372577F63400001E98 /* MainCellFactory.swift in Sources */,
+				8DE157372577F63400001E98 /* MainSectionFactory.swift in Sources */,
 				8DE157472577FD4500001E98 /* ButtonTableViewCell.swift in Sources */,
 				8DE1574F2578007C00001E98 /* ImageTableViewCell.swift in Sources */,
 				8DE1572F2577F60D00001E98 /* TextTableViewCell.swift in Sources */,

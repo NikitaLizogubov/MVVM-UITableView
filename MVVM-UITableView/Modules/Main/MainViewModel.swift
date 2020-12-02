@@ -26,7 +26,7 @@ class MainViewModel: AdaptedSectionViewModelType {
     private func setupMainSection() {
         let section = AdaptedSectionViewModel(cells: [
             TextCellViewModel(text: "Hello!"),
-            TextCellViewModel(text: "It's UITable view with using MVVM"),
+            TextCellViewModel(text: "It's UITableView with using MVVM"),
             ImageCellViewModel(imageName: "habr"),
             ButtonCellViewModel(buttonTitle: "Comments") {
                 print(#function)

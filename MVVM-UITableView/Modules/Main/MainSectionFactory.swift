@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MainCellFactory: AdaptedTableViewCellFactoryProtocol {
+struct MainSectionFactory: AdaptedSectionFactoryProtocol {
     
     var cellTypes: [AdaptedCellProtocol.Type] = [
         TextTableViewCell.self,
@@ -32,6 +32,10 @@ struct MainCellFactory: AdaptedTableViewCellFactoryProtocol {
         default:
             return UITableViewCell()
         }
+    }
+    
+    func generateSection(viewModel: AdaptedSectionHeaderViewModelProtocol) -> UIView? {
+        nil
     }
     
 }

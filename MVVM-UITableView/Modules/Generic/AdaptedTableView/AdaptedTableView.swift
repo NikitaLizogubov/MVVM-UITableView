@@ -8,9 +8,13 @@
 import UIKit
 import Combine
 
+protocol AdaptedSectionHeaderViewModelProtocol { }
+
 protocol AdaptedCellViewModelProtocol { }
 
 protocol AdaptedSectionViewModelProtocol {
+    var header: AdaptedSectionHeaderViewModelProtocol? { get }
+    var footer: AdaptedSectionHeaderViewModelProtocol? { get }
     var cells: [AdaptedCellViewModelProtocol] { get }
     var reloadDataPublisher: AnyPublisher<Void, Never> { get }
 }
@@ -56,13 +60,14 @@ extension AdaptedCellProtocol {
     
 }
 
-protocol AdaptedTableViewCellFactoryProtocol {
+protocol AdaptedSectionFactoryProtocol {
     var cellTypes: [AdaptedCellProtocol.Type] { get }
     func registerAllCells(_ tableView: UITableView)
     func generateCell(viewModel: AdaptedCellViewModelProtocol, tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell
+    func generateSection(viewModel: AdaptedSectionHeaderViewModelProtocol) -> UIView?
 }
 
-extension AdaptedTableViewCellFactoryProtocol {
+extension AdaptedSectionFactoryProtocol {
     
     func registerAllCells(_ tableView: UITableView) {
         cellTypes.forEach({ $0.register(tableView) })
@@ -75,7 +80,7 @@ class AdaptedTableView: UITableView {
     // MARK: - Public properties
     
     var viewModel: AdaptedSectionViewModelType?
-    var cellFactory: AdaptedTableViewCellFactoryProtocol? {
+    var cellFactory: AdaptedSectionFactoryProtocol? {
         didSet {
             cellFactory?.registerAllCells(self)
         }
@@ -127,6 +132,28 @@ extension AdaptedTableView: UITableViewDataSource {
         }
         
         return cellFactory.generateCell(viewModel: cellViewModel, tableView: tableView, for: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard
+            let cellFactory = cellFactory,
+            let headerViewModel = viewModel?.sections[section].header
+        else {
+            return nil
+        }
+        
+        return cellFactory.generateSection(viewModel: headerViewModel)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard
+            let cellFactory = cellFactory,
+            let footerViewModel = viewModel?.sections[section].footer
+        else {
+            return nil
+        }
+        
+        return cellFactory.generateSection(viewModel: footerViewModel)
     }
     
 }

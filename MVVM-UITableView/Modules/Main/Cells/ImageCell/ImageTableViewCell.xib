@@ -18,9 +18,6 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-Dr-yoQ">
                         <rect key="frame" x="8" y="8" width="304" height="304"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="DK9-Dr-yoQ" secondAttribute="height" multiplier="1:1" id="CsY-73-obx"/>
-                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
