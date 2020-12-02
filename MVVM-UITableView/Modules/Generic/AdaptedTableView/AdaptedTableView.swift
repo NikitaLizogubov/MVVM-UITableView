@@ -8,9 +8,7 @@
 import UIKit
 import Combine
 
-protocol AdaptedCellViewModelProtocol {
-    
-}
+protocol AdaptedCellViewModelProtocol { }
 
 protocol AdaptedSectionViewModelProtocol {
     var cells: [AdaptedCellViewModelProtocol] { get }
@@ -25,11 +23,17 @@ protocol AdaptedViewModelOutputProtocol {
     func didSelectRowAt(indexPath: IndexPath)
 }
 
+extension AdaptedViewModelOutputProtocol {
+    func didSelectRowAt(indexPath: IndexPath) { }
+}
+
 typealias AdaptedSectionViewModelType = AdaptedViewModelInputProtocol & AdaptedViewModelOutputProtocol
 
 protocol AdaptedCellProtocol {
     static var identifier: String { get }
     static var nib: UINib { get }
+    static func register(_ tableView: UITableView)
+    static func reuse(_ tableView: UITableView, for indexPath: IndexPath) -> Self
 }
 
 extension AdaptedCellProtocol {
@@ -42,11 +46,28 @@ extension AdaptedCellProtocol {
         UINib(nibName: identifier, bundle: nil)
     }
     
+    static func register(_ tableView: UITableView) {
+        tableView.register(nib, forCellReuseIdentifier: identifier)
+    }
+    
+    static func reuse(_ tableView: UITableView, for indexPath: IndexPath) -> Self {
+        tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! Self
+    }
+    
 }
 
 protocol AdaptedTableViewCellFactoryProtocol {
     var cellTypes: [AdaptedCellProtocol.Type] { get }
-    func generateCell(viewModel: AdaptedCellViewModelProtocol, tableView: UITableView) -> UITableViewCell
+    func registerAllCells(_ tableView: UITableView)
+    func generateCell(viewModel: AdaptedCellViewModelProtocol, tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell
+}
+
+extension AdaptedTableViewCellFactoryProtocol {
+    
+    func registerAllCells(_ tableView: UITableView) {
+        cellTypes.forEach({ $0.register(tableView) })
+    }
+    
 }
 
 class AdaptedTableView: UITableView {
@@ -54,7 +75,11 @@ class AdaptedTableView: UITableView {
     // MARK: - Public properties
     
     var viewModel: AdaptedSectionViewModelType?
-    var cellFactory: AdaptedTableViewCellFactoryProtocol?
+    var cellFactory: AdaptedTableViewCellFactoryProtocol? {
+        didSet {
+            cellFactory?.registerAllCells(self)
+        }
+    }
     
     // MARK: - Private properties
     
@@ -66,17 +91,10 @@ class AdaptedTableView: UITableView {
         self.dataSource = self
         self.delegate = self
         
-        self.registerCells()
         self.bindSections()
     }
     
     // MARK: - Private methods
-    
-    private func registerCells() {
-        cellFactory?.cellTypes.forEach({
-            self.register($0.nib, forCellReuseIdentifier: $0.identifier)
-        })
-    }
     
     private func bindSections() {
         viewModel?.sections.enumerated().forEach({ (index, section) in
@@ -108,7 +126,7 @@ extension AdaptedTableView: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        return cellFactory.generateCell(viewModel: cellViewModel, tableView: tableView)
+        return cellFactory.generateCell(viewModel: cellViewModel, tableView: tableView, for: indexPath)
     }
     
 }
