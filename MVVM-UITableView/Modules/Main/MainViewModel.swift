@@ -24,11 +24,13 @@ class MainViewModel: AdaptedSectionViewModelType {
     // MARK: - Private methods
     
     private func setupMainSection() {
-        let cells = [
+        let section = AdaptedSectionViewModel(cells: [
             TextCellViewModel(text: "Hello!"),
-            TextCellViewModel(text: "It's UITable view with using MVVM")
-        ]
-        let section = AdaptedSectionViewModel(cells: cells)
+            TextCellViewModel(text: "It's UITable view with using MVVM"),
+            ButtonCellViewModel(buttonTitle: "Select Me") { [weak self] in
+                print(#function)
+            }
+        ])
         sections.append(section)
     }
     
