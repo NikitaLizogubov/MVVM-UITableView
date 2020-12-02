@@ -56,15 +56,55 @@
 		8DE157062577ECA900001E98 /* MVVM-UITableView */ = {
 			isa = PBXGroup;
 			children = (
-				8DE157072577ECA900001E98 /* AppDelegate.swift */,
-				8DE157092577ECA900001E98 /* SceneDelegate.swift */,
-				8DE1570B2577ECA900001E98 /* ViewController.swift */,
-				8DE1570D2577ECA900001E98 /* Main.storyboard */,
-				8DE157102577ECAC00001E98 /* Assets.xcassets */,
-				8DE157122577ECAC00001E98 /* LaunchScreen.storyboard */,
-				8DE157152577ECAC00001E98 /* Info.plist */,
+				8DE1571D2577ED5300001E98 /* Recources */,
+				8DE157202577EDBF00001E98 /* Modules */,
 			);
 			path = "MVVM-UITableView";
+			sourceTree = "<group>";
+		};
+		8DE1571D2577ED5300001E98 /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				8DE157152577ECAC00001E98 /* Info.plist */,
+				8DE157102577ECAC00001E98 /* Assets.xcassets */,
+				8DE1571E2577ED6000001E98 /* Storyboards */,
+			);
+			path = Recources;
+			sourceTree = "<group>";
+		};
+		8DE1571E2577ED6000001E98 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8DE1570D2577ECA900001E98 /* Main.storyboard */,
+				8DE157122577ECAC00001E98 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8DE157202577EDBF00001E98 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8DE157212577EDC800001E98 /* Root */,
+				8DE157222577EDD100001E98 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		8DE157212577EDC800001E98 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				8DE157072577ECA900001E98 /* AppDelegate.swift */,
+				8DE157092577ECA900001E98 /* SceneDelegate.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		8DE157222577EDD100001E98 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8DE1570B2577ECA900001E98 /* ViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +328,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YH2LL6KMKW;
-				INFOPLIST_FILE = "MVVM-UITableView/Info.plist";
+				INFOPLIST_FILE = "MVVM-UITableView/Recources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YH2LL6KMKW;
-				INFOPLIST_FILE = "MVVM-UITableView/Info.plist";
+				INFOPLIST_FILE = "MVVM-UITableView/Recources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
